@@ -38,7 +38,7 @@ body {
 }
 
 #status {
-	background-color: #0b0d14;
+	background-color: #080a12;
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
@@ -92,7 +92,77 @@ body {
 		</style>
 		<link id="-gd-engine-icon" rel="icon" type="image/png" href="index.icon.png" />
 <link rel="apple-touch-icon" href="index.apple-touch-icon.png"/>
-
+<link rel='preconnect' href='https://fonts.googleapis.com'>
+<link rel='stylesheet' href='https://fonts.googleapis.com/css2?family=Jua&display=swap'>
+<style>
+html, body { background: #080a12; }
+#status {
+	background: radial-gradient(ellipse at 50% 45%, #1a1712 0%, #0c0e17 55%, #06070d 100%) !important;
+}
+#status-splash { animation: lr-breathe 5.5s ease-in-out infinite; }
+#status-progress {
+	-webkit-appearance: none;
+	appearance: none;
+	bottom: 11%;
+	width: min(420px, 62vw);
+	height: 2px;
+	border: 0;
+	border-radius: 2px;
+	background: rgba(232, 207, 150, 0.14);
+	color: #e8cf96;
+	overflow: visible;
+	box-shadow: 0 0 18px rgba(236, 200, 120, 0.18);
+}
+#status-progress::-webkit-progress-bar { background: rgba(232, 207, 150, 0.14); border-radius: 2px; }
+#status-progress::-webkit-progress-value {
+	background: linear-gradient(90deg, #8a6a2e, #ecc878 60%, #fff4d6);
+	border-radius: 2px;
+	box-shadow: 0 0 10px rgba(245, 205, 120, 0.9), 0 0 22px rgba(245, 197, 90, 0.5);
+	transition: width 0.25s ease-out;
+}
+#status-progress::-moz-progress-bar {
+	background: linear-gradient(90deg, #8a6a2e, #ecc878 60%, #fff4d6);
+	border-radius: 2px;
+	box-shadow: 0 0 10px rgba(245, 205, 120, 0.9);
+}
+#status-progress:indeterminate {
+	background: linear-gradient(90deg, transparent 0%, rgba(236, 200, 120, 0.9) 50%, transparent 100%) no-repeat, rgba(232, 207, 150, 0.14);
+	background-size: 30% 100%, 100% 100%;
+	animation: lr-sweep 1.6s ease-in-out infinite;
+}
+#status-progress:indeterminate::-webkit-progress-bar { background: transparent; }
+#status-progress:indeterminate::-moz-progress-bar { background: transparent; }
+#status::after {
+	content: '불러오는 중…';
+	position: absolute;
+	left: 0; right: 0;
+	bottom: calc(11% - 38px);
+	text-align: center;
+	font-family: 'Jua', 'Apple SD Gothic Neo', 'Noto Sans KR', 'Malgun Gothic', sans-serif;
+	font-size: 15px;
+	letter-spacing: 0.32em;
+	color: #e8cf96;
+	text-shadow: 0 0 12px rgba(236, 200, 120, 0.55);
+	animation: lr-pulse 2.2s ease-in-out infinite;
+	pointer-events: none;
+}
+#status:has(#status-notice[style*='block'])::after { content: none; }
+#status-notice {
+	background: rgba(14, 12, 20, 0.88) !important;
+	border: 1px solid rgba(214, 178, 110, 0.55) !important;
+	border-radius: 10px !important;
+	color: #efe6d2 !important;
+	font-family: 'Apple SD Gothic Neo', 'Noto Sans KR', 'Malgun Gothic', sans-serif !important;
+	box-shadow: 0 0 30px rgba(236, 200, 120, 0.12);
+	max-width: 560px;
+}
+@keyframes lr-pulse { 0%, 100% { opacity: 0.35; } 50% { opacity: 0.95; } }
+@keyframes lr-sweep { 0% { background-position: -40% 0, 0 0; } 100% { background-position: 140% 0, 0 0; } }
+@keyframes lr-breathe { 0%, 100% { filter: brightness(0.96); } 50% { filter: brightness(1.06); } }
+@media (prefers-reduced-motion: reduce) {
+	#status-splash, #status::after, #status-progress:indeterminate { animation: none; }
+}
+</style>
 	</head>
 	<body>
 		<canvas id="canvas">
@@ -111,7 +181,7 @@ body {
 
 		<script src="index.js"></script>
 		<script>
-const GODOT_CONFIG = {"args":[],"canvasResizePolicy":2,"emscriptenPoolSize":8,"ensureCrossOriginIsolationHeaders":true,"executable":"index","experimentalVK":false,"fileSizes":{"index.pck":38244780,"index.wasm":39514754},"focusCanvas":true,"gdextensionLibs":[],"godotPoolSize":4};
+const GODOT_CONFIG = {"args":[],"canvasResizePolicy":2,"emscriptenPoolSize":8,"ensureCrossOriginIsolationHeaders":true,"executable":"index","experimentalVK":false,"fileSizes":{"index.pck":38920240,"index.wasm":39514754},"focusCanvas":true,"gdextensionLibs":[],"godotPoolSize":4};
 const GODOT_THREADS_ENABLED = false;
 const engine = new Engine(GODOT_CONFIG);
 
